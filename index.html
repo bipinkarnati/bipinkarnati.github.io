@@ -46,7 +46,7 @@
 			.append('rect')
 			.attr('x',function(d,i) {return xs(parseInt(d.Year));})
 			.attr('y',function(d,i) {return ys(parseInt(d.MPersons));})
-			.attr('width', function(d,i) {return xs(i)};)
+			.attr('width', function(d,i) {return xs(i);})
 			.attr('height',function(d,i) {return hs(parseInt(d.MPersons));});
 			d3.select("svg")
 			.attr("width", width + 2*margin)
