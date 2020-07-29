@@ -45,7 +45,7 @@
 			.attr('x',function(d,i) {return xs(parseInt(d.Year));})
 			.attr('y',function(d,i) {return ys(parseInt(d.MPersons));})
 			.attr('width',33.3333)
-			.attr('h',function(d,i) {return hs(parseInt(d.MPersons));});
+			.attr('height',function(d,i) {return hs(parseInt(d.MPersons));});
 			d3.select("svg")
 			.append("g")
 			.attr("transform","translate("+50+","+50+")")
