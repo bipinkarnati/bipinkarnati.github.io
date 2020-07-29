@@ -62,15 +62,15 @@
 			.attr("transform","translate("+ margin +","+ (height + margin)+")")
 			.call(d3.axisBottom(xs));
 			d3.select("svg")
-			.attr("width", width + 2*margin)
-			.attr("height",height + 2*margin)
+			.attr("width", width + margin)
+			.attr("height",height + margin)
 			.append("text")
 			.attr("tranform","rotate(-90)")
 			.attr("y", 0-margin)
 			.attr("x", 0 - (height / 2))
 			.attr("dy","1em")
 			.style("text-anchor","middle")
-			.text("Number of Persons (in millinos)")
+			.text("Number of Persons (in millinos)");
 			}
 			</script>
 		
