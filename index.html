@@ -38,7 +38,20 @@
 				.attr("transform","translate(" + margin.left + "," + margin.top +")");
 				
 				//chart
-			svg.selectAll().data(data)
+// 			svg.selectAll().data(data)
+// 			.enter()
+// 			.append('rect')
+// 			.attr('x',function(d,i) {return xs(parseInt(d.Year));})
+// 			.attr('y',function(d,i) {return ys(parseInt(d.MPersons));})
+// 			.attr('width', xs.bandwidth())
+// 			.attr('height',function(d,i) {return hs(parseInt(d.MPersons));});
+			d3.select("svg")
+			.attr("width", width + margin.left + margin.right)
+			.attr("height",height + margin.top + margin.bottom)
+			.append("g")
+			.attr("transform","translate(" + margin.left + "," + margin.top +")")
+			.selectAll()
+			.data(data)
 			.enter()
 			.append('rect')
 			.attr('x',function(d,i) {return xs(parseInt(d.Year));})
