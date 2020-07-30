@@ -38,7 +38,7 @@
 				.attr("transform","translate(" + margin.left + "," + margin.top +")");
 				
 				//chart
-			svg.select().data(data)
+			svg.selectAll().data(data)
 			.enter()
 			.append('rect')
 			.attr('x',function(d,i) {return xs(parseInt(d.Year));})
