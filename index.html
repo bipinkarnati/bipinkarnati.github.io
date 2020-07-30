@@ -36,8 +36,9 @@
 				.attr("height",height + margin.top + margin.bottom)
 				.append("g")
 				.attr("transform","translate(" + margin.left + "," + margin.top +")");
-			svg.selectAll()
-			.data(data)
+				
+				//chart
+			svg.data(data)
 			.enter()
 			.append('rect')
 			.attr('x',function(d,i) {return xs(parseInt(d.Year));})
@@ -57,17 +58,19 @@
 				//y label
 			svg.append("text")
 			.attr("tranform","rotate(-90)")
-			.attr("y", 0 - (margin.left - 10))
+			.attr("y", 0 - (margin.left))
 			.attr("x", 0 - (height / 2))
 			.attr("dy","1em")
 			.style("text-anchor","middle")
+			.style("font-size","12px Arial")
 			.text("Number of Persons (in millinos)");
 				
 				//x label
 			svg.append("text")
 			.attr("transform","translate(" + width / 2 + "," + (height + margin.top) + ")")
 			.style("text-anchor","middle")
-			.text("Year")
+			.style("font-size","12px Arial")
+			.text("Year");			
 			}
 			</script>
 		
