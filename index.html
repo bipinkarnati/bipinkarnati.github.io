@@ -60,7 +60,8 @@
 			.attr('height',function(d,i) {return hs(parseInt(d.MPersons));});
 			
 				// y axis
-			svg1.call(d3.axisLeft(ys).tickValues([10,20,30,40,50])
+			svg1.append("g")
+			.call(d3.axisLeft(ys).tickValues([10,20,30,40,50])
 			.tickFormat(d3.format("~s")));
 				
 				//x axis
@@ -82,7 +83,6 @@
 			svg1.append("text")
 			.attr("transform","translate(" + width / 2 + "," + (height + margin.top) + ")")
 			.style("text-anchor","middle")
-			.style("font-size","12px")
 			.text("Year");			
 			}
 			</script>
