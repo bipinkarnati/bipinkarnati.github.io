@@ -31,7 +31,7 @@
 			height = 400
 			width = 700
 			var margin = {left:50, right:50, top:50, bottom:50}
-			var svg = d3.select("svg")
+			var svg1 = d3.select("svg")
 				.attr("width", width + margin.left + margin.right)
 				.attr("height",height + margin.top + margin.bottom)
 				.append("g")
@@ -60,16 +60,16 @@
 			.attr('height',function(d,i) {return hs(parseInt(d.MPersons));});
 			
 				// y axis
-			svg.call(d3.axisLeft(ys).tickValues([10,20,30,40,50])
+			svg1.call(d3.axisLeft(ys).tickValues([10,20,30,40,50])
 			.tickFormat(d3.format("~s")));
 				
 				//x axis
-			svg.append("g")
+			svg1.append("g")
 			.attr("transform","translate("+ 0 +","+ (height + 0)+")")
 			.call(d3.axisBottom(xs));
 				
 				//y label
-			svg.append("text")
+			svg1.append("text")
 			.attr("tranform","rotate(-90)")
 			.attr("y", 0 - (margin.left))
 			.attr("x", 0 - (height / 2))
@@ -79,7 +79,7 @@
 			.text("Number of Persons (in millinos)");
 				
 				//x label
-			svg.append("text")
+			svg1.append("text")
 			.attr("transform","translate(" + width / 2 + "," + (height + margin.top) + ")")
 			.style("text-anchor","middle")
 			.style("font-size","12px")
