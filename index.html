@@ -6,10 +6,9 @@
 		<title>USDA SNAP Benefits Issuance</title>
 		<!-- link to main stylesheet -->
 		<link rel="stylesheet" type="text/css" href="/css/main.css">
-		<div class="blurb">
-        		<h1>USDA Food and Nutrition Service Benefit Issuance Summary</h1>
-				
-    		</div><!-- /.blurb -->
+		<div class="header">
+        		<h2>US Food and Nutrition Service Beneficiaries - Factors Influenced</h2>				
+    		</div>
 	</head>
 	<body onload='init()';>
 		<nav>
@@ -61,7 +60,7 @@
 			
 				// y axis
 			svg1.append("g")
-			.call(d3.axisLeft(ys).tickValues([10,20,30,40,50])
+			.call(d3.axisLeft(ys).tickValues([10M,20M,30M,40M,50M])
 			.tickFormat(d3.format("~s")));
 				
 				//x axis
@@ -74,7 +73,7 @@
 			.attr("transform","rotate(-90)")
 			.attr("y", 0 - (margin.left))
 			.attr("x", 0 - (height / 2))
-			.attr("dy","1em")
+			.attr("dy","1.5em")
 			.style("text-anchor","middle")
 			.style("font-size","12px")
 			.style("font-family","sans-serif")
@@ -83,6 +82,7 @@
 				//x label
 			svg1.append("text")
 			.attr("transform","translate(" + width / 2 + "," + (height + margin.top) + ")")
+			.attr("dx","1.5em")
 			.style("text-anchor","middle")
 			.style("font-size","12px")
 			.style("font-family","sans-serif")
