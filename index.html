@@ -37,30 +37,30 @@
 				.attr("transform","translate(" + margin.left + "," + margin.top +")");
 				
 				//chart
-// 			svg.selectAll().data(data)
-// 			.enter()
-// 			.append('rect')
-// 			.attr('x',function(d,i) {return xs(parseInt(d.Year));})
-// 			.attr('y',function(d,i) {return ys(parseInt(d.MPersons));})
-// 			.attr('width', xs.bandwidth())
-// 			.attr('height',function(d,i) {return hs(parseInt(d.MPersons));});
-			d3.select("svg")
-			.attr("width", width + margin.left + margin.right)
-			.attr("height",height + margin.top + margin.bottom)
-			.append("g")
-			.attr("transform","translate(" + margin.left + "," + margin.top +")")
-			.selectAll()
-			.data(data)
+			svg1.selectAll().data(data)
 			.enter()
 			.append('rect')
 			.attr('x',function(d,i) {return xs(parseInt(d.Year));})
 			.attr('y',function(d,i) {return ys(parseInt(d.MPersons));})
 			.attr('width', xs.bandwidth())
 			.attr('height',function(d,i) {return hs(parseInt(d.MPersons));});
+// 			d3.select("svg")
+// 			.attr("width", width + margin.left + margin.right)
+// 			.attr("height",height + margin.top + margin.bottom)
+// 			.append("g")
+// 			.attr("transform","translate(" + margin.left + "," + margin.top +")")
+// 			.selectAll()
+// 			.data(data)
+// 			.enter()
+// 			.append('rect')
+// 			.attr('x',function(d,i) {return xs(parseInt(d.Year));})
+// 			.attr('y',function(d,i) {return ys(parseInt(d.MPersons));})
+// 			.attr('width', xs.bandwidth())
+// 			.attr('height',function(d,i) {return hs(parseInt(d.MPersons));});
 			
 				// y axis
 			svg1.append("g")
-			.call(d3.axisLeft(ys).tickValues(["10M","20M","30M","40M","50M"])
+			.call(d3.axisLeft(ys).tickValues(["10","20","30","40","50"])
 			.tickFormat(d3.format("~s")));
 				
 				//x axis
@@ -75,7 +75,7 @@
 			.attr("x", 0 - (height / 2))
 			.attr("dy","1.5em")
 			.style("text-anchor","middle")
-			.style("font-size","12px")
+			.style("font-size","14px")
 			.style("font-family","sans-serif")
 			.text("Number of Persons (in Millinos)");
 				
@@ -84,7 +84,7 @@
 			.attr("transform","translate(" + width / 2 + "," + (height + margin.top) + ")")
 			.attr("dx","1.5em")
 			.style("text-anchor","middle")
-			.style("font-size","12px")
+			.style("font-size","14px")
 			.style("font-family","sans-serif")
 			.text("Year");			
 			}
