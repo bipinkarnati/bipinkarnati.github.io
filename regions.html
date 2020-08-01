@@ -49,9 +49,9 @@
 			var state = "US"
 			console.log(data)
 			var xs = d3.scaleBand().domain(data.map(function (d) {return d.Year})).range([0,700])
-			var ys = d3.scaleLinear().domain([0,15]).range([400,0])
+			var ys = d3.scaleLinear().domain([0,13]).range([400,0])
 			//var hs = d3.scaleLinear().domain([0,50]).range([0,400])
-			const color = ['pink','lightskyblue','lightyellow','mediumpurple','darksalmon','palegreen','skyblue'];
+			const color = ['pink','lightskyblue','yellow','mediumpurple','darksalmon','palegreen','skyblue'];
 			height = 400
 			width = 700
 			var margin = {left:50, right:50, top:50, bottom:50}
@@ -84,12 +84,13 @@
 			.attr("fill","none")
 			.attr("stroke", function(d, i) {return color[i]})
 			.attr("stroke-width", 2.0)
+			.attr("stroke-	")
 			.attr("d", line);
 			
 			
 				// y axis
 			svg1.append("g")
-			.call(d3.axisLeft(ys).tickValues(["1","4","8","12","16"])
+			.call(d3.axisLeft(ys).tickValues(["1","3","6","9","12"])
 			.tickFormat(d3.format("~s")));
 				
 				//x axis
