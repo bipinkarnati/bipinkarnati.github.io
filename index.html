@@ -22,7 +22,17 @@
 			async function init() {
 			//function init() {
 			const data = await d3.csv("https://raw.githubusercontent.com/bipinkarnati/bipinkarnati.github.io/master/USTotals.csv");
-			
+			data.forEach(function(d) {
+				d.Year = +d.Year;
+				d.HouseHolds = +d.Households;
+				d.Persons = +d.Persons;
+				d.TotalCost = +d.TotalCost;
+				d.CostPerHousehold = +d.CostPerHousehold;
+				d.CostPerPerson = +d.CostPerPerson;
+				d.MPersons = +d.MPersons;
+				d.State = d.State;
+			});				
+			var state = "US"
 			console.log(data)
 			var xs = d3.scaleBand().domain(data.map(function (d) {return d.Year})).range([0,700])
 			var ys = d3.scaleLinear().domain([0,50]).range([400,0])
@@ -37,26 +47,14 @@
 				.attr("transform","translate(" + margin.left + "," + margin.top +")");
 				
 				//chart
-			svg1.selectAll().data(data)
+			const state_data = data.filter(function(d) {return d.State == state});
+			svg1.selectAll().data(state_data)
 			.enter()
 			.append('rect')
 			.attr('x',function(d,i) {return xs(parseInt(d.Year));})
 			.attr('y',function(d,i) {return ys(parseInt(d.MPersons));})
 			.attr('width', xs.bandwidth())
 			.attr('height',function(d,i) {return hs(parseInt(d.MPersons));});
-// 			d3.select("svg")
-// 			.attr("width", width + margin.left + margin.right)
-// 			.attr("height",height + margin.top + margin.bottom)
-// 			.append("g")
-// 			.attr("transform","translate(" + margin.left + "," + margin.top +")")
-// 			.selectAll()
-// 			.data(data)
-// 			.enter()
-// 			.append('rect')
-// 			.attr('x',function(d,i) {return xs(parseInt(d.Year));})
-// 			.attr('y',function(d,i) {return ys(parseInt(d.MPersons));})
-// 			.attr('width', xs.bandwidth())
-// 			.attr('height',function(d,i) {return hs(parseInt(d.MPersons));});
 			
 				// y axis
 			svg1.append("g")
