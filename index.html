@@ -10,11 +10,21 @@
         		<h2>US Food and Nutrition Service Beneficiaries - Factors Influenced</h2>				
     		</div>
 	</head>
-	<body onload='init()';>
+	<body onload='init()'>
+		<div class='intro">
+			    <p>
+			    	In the United States, the Supplemental Nutrition Assistance Program (SNAP), formerly yet still commonly known as the Food Stamp Program, 
+			    	is a federal program that provides food-purchasing assistance for low and no-income people. It is a federal aid program, administered by 
+			    	the United States Department of Agriculture under the Food and Nutrition Service (FNS), though benefits are distributed by specific departments 
+			    	of U.S. states.
+			    	Source: <li><a href="https://en.wikipedia.org/wiki/Supplemental_Nutrition_Assistance_Program">Wikipedia/SNAP</a></li>
+			    		<li><a href="https://www.fns.usda.gov/pd/supplemental-nutrition-assistance-program-snap">USDA-FNS</a></li>
+			    </p>
+		</div>		 
 		<nav>
     		<ul>
         		<li><a href="/">Home</a></li>
-	        	<li><a href="/about">About</a></li>
+	        	<li><a href="/regions">Beneficiaries By Regions</a></li>
     		</ul>
 		</nav>    		
 		<svg width=800 height=500></svg>		
@@ -24,7 +34,7 @@
 			const data = await d3.csv("https://raw.githubusercontent.com/bipinkarnati/bipinkarnati.github.io/master/USTotals.csv");
 			data.forEach(function(d) {
 				d.Year = +d.Year;
-				d.HouseHolds = +d.Households;
+				d.Households = +d.Households;
 				d.Persons = +d.Persons;
 				d.TotalCost = +d.TotalCost;
 				d.CostPerHousehold = +d.CostPerHousehold;
@@ -92,7 +102,7 @@
 		<footer>
     		<ul>
         		<p>
-				<b>Desclaimer:</b> This site is build for learning purpose only.
+				<b>Desclaimer:</b> This site is built for learning purpose only.
 			</p>
 		</ul>
 		</footer>
