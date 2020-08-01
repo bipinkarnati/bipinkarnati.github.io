@@ -47,7 +47,8 @@
 				.attr("transform","translate(" + margin.left + "," + margin.top +")");
 				
 				//chart
-			const state_data = data.filter(function(d) {return d.State == state});
+			var state_data = data.filter(function(d) {return d.State == state});
+			console.log(state_data)
 			svg1.selectAll().data(state_data)
 			.enter()
 			.append('rect')
