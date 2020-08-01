@@ -30,7 +30,7 @@
 		</div>
 	</head>
 	<body onload='init()';>
-		<div id="byregions" class="svgregions"></div>			
+		<div id="byregions" class="svgregions" align="center"></div>			
 		<svg width=800 height=500></svg>
 			<script>
 			async function init() {
@@ -89,7 +89,7 @@
 			
 				// y axis
 			svg1.append("g")
-			.call(d3.axisLeft(ys).tickValues(["1","3","6","9","12"])
+			.call(d3.axisLeft(ys).tickValues(["1","3","5","7","9","11","13"])
 			.tickFormat(d3.format("~s")));
 				
 				//x axis
