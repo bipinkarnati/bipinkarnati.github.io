@@ -49,9 +49,9 @@
 			var state = "US"
 			console.log(data)
 			var xs = d3.scaleBand().domain(data.map(function (d) {return d.Year})).range([0,700])
-			var ys = d3.scaleLinear().domain([0,50]).range([400,0])
+			var ys = d3.scaleLinear().domain([0,15]).range([400,0])
 			//var hs = d3.scaleLinear().domain([0,50]).range([0,400])
-			const color = ['pink','lightyellow','lightgreen','lightcyan','lightblue','violet','lightblue'];
+			const color = ['pink','lightskyblue','lightyellow','mediumpurple1','darksalmon','palegreen1','skyblue'];
 			height = 400
 			width = 700
 			var margin = {left:50, right:50, top:50, bottom:50}
@@ -76,6 +76,7 @@
 			.x(function(d) {return xs(d.Year)})
 			.y(function(d) {return ys(d.MPersons)});
 
+			// draw line chart
 			svg1.selectAll(".line")
 			.data(region_data)
 			.enter()
@@ -83,12 +84,8 @@
 			.attr("fill","none")
 			.attr("stroke", function(d, i) {return color[i]})
 			.attr("stroke-width", 2.0)
-			.attr("d", line)
-			/*.attr('x',function(d,i) {return xs(parseInt(d.Year));})
-			.attr('y',function(d,i) {return ys(parseInt(d.MPersons));})
-			.attr('width', xs.bandwidth())
-			.attr('height',function(d,i) {return hs(parseInt(d.MPersons));}) */
-			;
+			.attr("d", line);
+			
 			
 				// y axis
 			svg1.append("g")
