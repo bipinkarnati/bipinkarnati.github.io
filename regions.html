@@ -51,7 +51,7 @@
 			var xs = d3.scaleBand().domain(data.map(function (d) {return d.Year})).range([0,700])
 			var ys = d3.scaleLinear().domain([0,15]).range([400,0])
 			//var hs = d3.scaleLinear().domain([0,50]).range([0,400])
-			const color = ['pink','lightskyblue','lightyellow','mediumpurple1','darksalmon','palegreen1','skyblue'];
+			const color = ['pink','lightskyblue','lightyellow','mediumpurple','darksalmon','palegreen','skyblue'];
 			height = 400
 			width = 700
 			var margin = {left:50, right:50, top:50, bottom:50}
@@ -89,7 +89,7 @@
 			
 				// y axis
 			svg1.append("g")
-			.call(d3.axisLeft(ys).tickValues(["10","20","30","40","50"])
+			.call(d3.axisLeft(ys).tickValues(["1","4","8","12","16"])
 			.tickFormat(d3.format("~s")));
 				
 				//x axis
