@@ -18,20 +18,20 @@
     			</ul>
 			</nav>   
 		</div>
+		<div class="intro">
+			<p>
+				In the United States, the Supplemental Nutrition Assistance Program (SNAP), formerly yet still commonly known as the Food Stamp Program, 
+				is a federal program that provides food-purchasing assistance for low and no-income people. It is a federal aid program, administered by 
+				the United States Department of Agriculture under the Food and Nutrition Service (FNS), though benefits are distributed by specific departments 
+				of U.S. states.<br>
+				Source: <li><a href="https://en.wikipedia.org/wiki/Supplemental_Nutrition_Assistance_Program">Wikipedia/SNAP</a></li>
+					<li><a href="https://www.fns.usda.gov/pd/supplemental-nutrition-assistance-program-snap">USDA-FNS</a></li>
+			</p>
+		</div>
 	</head>
 	<body onload='init()';>
-		<div class="intro">
-			    <p>
-			    	In the United States, the Supplemental Nutrition Assistance Program (SNAP), formerly yet still commonly known as the Food Stamp Program, 
-			    	is a federal program that provides food-purchasing assistance for low and no-income people. It is a federal aid program, administered by 
-			    	the United States Department of Agriculture under the Food and Nutrition Service (FNS), though benefits are distributed by specific departments 
-			    	of U.S. states.<br>
-			    	Source: <li><a href="https://en.wikipedia.org/wiki/Supplemental_Nutrition_Assistance_Program">Wikipedia/SNAP</a></li>
-			    		<li><a href="https://www.fns.usda.gov/pd/supplemental-nutrition-assistance-program-snap">USDA-FNS</a></li>
-			    </p>
-		</div>		 
-			
-		<svg width=800 height=500></svg>		
+		<div id="byregions" class="svgregions"></div>			
+		<svg width=800 height=500></svg>
 			<script>
 			async function init() {
 			//function init() {
@@ -50,26 +50,40 @@
 			console.log(data)
 			var xs = d3.scaleBand().domain(data.map(function (d) {return d.Year})).range([0,700])
 			var ys = d3.scaleLinear().domain([0,50]).range([400,0])
-			var hs = d3.scaleLinear().domain([0,50]).range([0,400])
+			//var hs = d3.scaleLinear().domain([0,50]).range([0,400])
+			const color = ['pink','lightyellow','lightgreen','lightcyan','lightblue','violet','lightblue'];
 			height = 400
 			width = 700
 			var margin = {left:50, right:50, top:50, bottom:50}
-			var svg1 = d3.select("svg")
+			var svg1 = d3.select("div#byregions").append("svg")
 				.attr("width", width + margin.left + margin.right)
 				.attr("height",height + margin.top + margin.bottom)
 				.append("g")
 				.attr("transform","translate(" + margin.left + "," + margin.top +")");
 				
 				//chart
-			var state_data = data.filter(function(d) {return d.State == state});
-			console.log(state_data)
-			svg1.selectAll().data(state_data)
+			const state_data = data.filter(function(d) {return d.State == state});
+			const region_data = [data.filter(function(d) {return d.State == "NERO"}),
+								 data.filter(function(d) {return d.State == "MARO"}),
+								 data.filter(function(d) {return d.State == "SERO"}),
+								 data.filter(function(d) {return d.State == "MWRO"}),
+								 data.filter(function(d) {return d.State == "SWRO"}),
+								 data.filter(function(d) {return d.State == "MPRO"}),
+								 data.filter(function(d) {return d.State == "WRO"})]
+			console.log(region_data)
+			svg1.selectAll(".line")
+			.data(region_data)
 			.enter()
-			.append('rect')
-			.attr('x',function(d,i) {return xs(parseInt(d.Year));})
+			.append("path")
+			.attr("fill","none")
+			.attr("stroke", function(d, i) {return color(i)})
+			.attr("stroke-width", 2.0)
+			.attr("d", line)
+			/*.attr('x',function(d,i) {return xs(parseInt(d.Year));})
 			.attr('y',function(d,i) {return ys(parseInt(d.MPersons));})
 			.attr('width', xs.bandwidth())
-			.attr('height',function(d,i) {return hs(parseInt(d.MPersons));});
+			.attr('height',function(d,i) {return hs(parseInt(d.MPersons));}) */
+			;
 			
 				// y axis
 			svg1.append("g")
@@ -101,13 +115,12 @@
 			.style("font-family","sans-serif")
 			.text("Year");			
 			}
-			</script>
-		
+			</script>		
 		<footer>
     		<ul>
         		<p>
-				<b>Desclaimer:</b> This site is built for learning purpose only.
-			</p>
+					<b>Desclaimer:</b> This site is built for learning purpose only.
+				</p>
 		</ul>
 		</footer>
 	</body>
