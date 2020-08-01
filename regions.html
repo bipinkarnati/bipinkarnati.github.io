@@ -61,7 +61,7 @@
 				.append("g")
 				.attr("transform","translate(" + margin.left + "," + margin.top +")");
 				
-				//chart
+				//chart data
 			const state_data = data.filter(function(d) {return d.State == state});
 			const region_data = [data.filter(function(d) {return d.State == "NERO"}),
 								 data.filter(function(d) {return d.State == "MARO"}),
@@ -71,6 +71,11 @@
 								 data.filter(function(d) {return d.State == "MPRO"}),
 								 data.filter(function(d) {return d.State == "WRO"})]
 			console.log(region_data)
+			
+			const line = d3.line()
+			.x(function(d) {return xs(d.Year)})
+			.y(function(d) {return ys(d.MPersons)});
+
 			svg1.selectAll(".line")
 			.data(region_data)
 			.enter()
