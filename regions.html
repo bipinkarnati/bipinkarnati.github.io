@@ -56,6 +56,7 @@
 						var xs = d3.scaleBand().domain(data.map(function (d) {return d.Year})).range([0,700])
 						var ys = d3.scaleLinear().domain([0,13]).range([400,0])
 						var cs = d3.scaleOrdinal(["#FF88C4","#79D7FF","#FFDE6C","#C891FF","#FFA264","#B5EC7D","#6FCAE1"]);
+						var col = ["#FF88C4","#79D7FF","#FFDE6C","#C891FF","#FFA264","#B5EC7D","#6FCAE1"]
 						//const color = ['pink','lightskyblue','yellow','mediumpurple','darksalmon','palegreen','skyblue'];
 						height = 400
 						width = 700
@@ -132,7 +133,8 @@
 						.duration(1000)
 						.attr("x", 110)
 						.attr("y", 120)
-						.text("Southeast Regional Office");
+						.text("Southeast Regional Office")
+						.style("font-size","10px");
 							//append dotted line
 						svg1.append("line")
 						.transition()
@@ -140,10 +142,130 @@
 						.duration(1000)
 						.attr("x1", 130)
 						.attr("x2", 170)
-						.attr("y1", 120)
-						.attr("y2", 120)
-						.attr("stroke", "#FFDE6C")
-						.attr("stroke-width", "2");
+						.attr("y1", 80)
+						.attr("y2", 80)
+						.attr("stroke", col[2])
+						.attr("stroke-width", "3");
+							//MWRO
+						svg1.append("text")
+						.transition()
+						.delay(3000)
+						.duration(1000)
+						.attr("x", 110)
+						.attr("y", 120)
+						.text("Midwest Regional Office")
+						.style("font-size","10px");
+							//append dotted line
+						svg1.append("line")
+						.transition()
+						.delay(3000)
+						.duration(1000)
+						.attr("x1", 130)
+						.attr("x2", 170)
+						.attr("y1", 60)
+						.attr("y2", 60)
+						.attr("stroke", col[3])
+						.attr("stroke-width", "3");
+							//WRO
+						svg1.append("text")
+						.transition()
+						.delay(3000)
+						.duration(1000)
+						.attr("x", 110)
+						.attr("y", 120)
+						.text("Western Regional Office")
+						.style("font-size","10px");
+							//append dotted line
+						svg1.append("line")
+						.transition()
+						.delay(3000)
+						.duration(1000)
+						.attr("x1", 130)
+						.attr("x2", 170)
+						.attr("y1", 60)
+						.attr("y2", 60)
+						.attr("stroke", col[6])
+						.attr("stroke-width", "3");
+							//SWRO
+						svg1.append("text")
+						.transition()
+						.delay(3000)
+						.duration(1000)
+						.attr("x", 110)
+						.attr("y", 120)
+						.text("Southwest Regional Office")
+						.style("font-size","10px");
+							//append dotted line
+						svg1.append("line")
+						.transition()
+						.delay(3000)
+						.duration(1000)
+						.attr("x1", 130)
+						.attr("x2", 170)
+						.attr("y1", 40)
+						.attr("y2", 40)
+						.attr("stroke", col[5])
+						.attr("stroke-width", "3");
+							//NERO
+						svg1.append("text")
+						.transition()
+						.delay(3000)
+						.duration(1000)
+						.attr("x", 110)
+						.attr("y", 120)
+						.text("Northeast Regional Office")
+						.style("font-size","10px");
+							//append dotted line
+						svg1.append("line")
+						.transition()
+						.delay(3000)
+						.duration(1000)
+						.attr("x1", 130)
+						.attr("x2", 170)
+						.attr("y1", 40)
+						.attr("y2", 40)
+						.attr("stroke", col[0])
+						.attr("stroke-width", "3");
+							//MARO
+						svg1.append("text")
+						.transition()
+						.delay(3000)
+						.duration(1000)
+						.attr("x", 110)
+						.attr("y", 120)
+						.text("Mid-Atlantic Regional Office")
+						.style("font-size","10px");
+							//append dotted line
+						svg1.append("line")
+						.transition()
+						.delay(3000)
+						.duration(1000)
+						.attr("x1", 130)
+						.attr("x2", 170)
+						.attr("y1", 20)
+						.attr("y2", 20)
+						.attr("stroke", col[0])
+						.attr("stroke-width", "3");
+							//MPRO
+						svg1.append("text")
+						.transition()
+						.delay(3000)
+						.duration(1000)
+						.attr("x", 110)
+						.attr("y", 120)
+						.text("Mountain Plains Regional Office")
+						.style("font-size","10px");
+							//append dotted line
+						svg1.append("line")
+						.transition()
+						.delay(3000)
+						.duration(1000)
+						.attr("x1", 130)
+						.attr("x2", 170)
+						.attr("y1", 20)
+						.attr("y2", 20)
+						.attr("stroke", col[5])
+						.attr("stroke-width", "3");
 						
 						}
 						</script>				
