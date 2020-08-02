@@ -79,9 +79,9 @@
 								 data.filter(function(d) {return d.State == "WRO"})]
 			//console.log(region_data)
 			
-			drawChart(state_data,svg1)		
+			drawChart(state_data)		
 			}
-			function drawChart(state_data,svg1){
+			function drawChart(state_data){
 
 			var xs = d3.scaleBand().domain(data.map(function (d) {return d.Year})).range([0,700])
 			var ys = d3.scaleLinear().domain([0,13]).range([400,0])
