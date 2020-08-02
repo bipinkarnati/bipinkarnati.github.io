@@ -108,7 +108,7 @@
 			.x(function(d) {return xs(d.Year)})
 			.y(function(d) {return ys(d.MPersons)});
 				// draw line chart
-			svg1.append("path")
+			var line1 = svg1.append("path")
 			.datum(state_data)
 			.transition()
 			.duration(1000)
