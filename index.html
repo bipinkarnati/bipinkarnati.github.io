@@ -105,16 +105,25 @@
 			svg1.append("text")
 			.transition()
 			.duration(3000)
-			.attr('x', 120)
-			.attr('y', 100)
+			.attr("x", 120)
+			.attr("y", 100)
 			.text("The steep in number of people seeking assistance was")	;
 			svg1.append("text")
 			.transition()
 			.duration(3000)
-			.attr('x', 120)
-			.attr('y', 110)
+			.attr("x", 120)
+			.attr("y", 110)
 			.text("due to Great Recession and high unemployment rate");
-				
+				//append dotted line
+			svg1.append("line")
+			.transition()
+			.duration(3000)
+			.attr("x1", 140)
+			.attr("x2", 180)
+			.attr("y1", 140)
+			.attr("y2", 180)
+			.attr("stroke", steelblue)
+			.attr("stroke-dasharray", "10");
 			}
 			</script>
 			</div>
