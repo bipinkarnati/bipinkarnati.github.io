@@ -101,21 +101,35 @@
 			.style("font-family","sans-serif")
 			.text("Year");	
 
-				//annotations
+				//annotations - For increase in Assistance
 			svg1.append("text")
 			.transition()
 			.delay(3000)
 			.duration(1000)
-			.attr("x", 80)
+			.attr("x", 110)
+			.attr("y", 60)
+			.text("The steep increase in number of")	;
+			svg1.append("text")
+			.transition()
+			.delay(3000)
+			.duration(1000)
+			.attr("x", 110)
+			.attr("y", 80)
+			.text("people seeking assistance was");
+			svg1.append("text")
+			.transition()
+			.delay(3000)
+			.duration(1000)
+			.attr("x", 110)
 			.attr("y", 100)
-			.text("The steep increase in number of people seeking assistance")	;
+			.text("due to high unemployment rate")	;
 			svg1.append("text")
 			.transition()
 			.delay(3000)
 			.duration(1000)
-			.attr("x", 80)
+			.attr("x", 110)
 			.attr("y", 120)
-			.text("was due to high unemployment rate during recession");
+			.text("during Great Recession");
 				//append dotted line
 			svg1.append("line")
 			.transition()
