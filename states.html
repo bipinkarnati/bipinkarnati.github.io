@@ -30,12 +30,11 @@
 	<body onload='init()';>
 		<div id="dropdown" class="states">
 			<select class="options">
+				<option></option>
 			</select>	
 		</div>
-		<div id="byregions" class="svgregions" align="center"></div>			
-		/*<svg width=800 height=500></svg>*/
+		<div id="byregions" class="svgregions" align="center"></div>
 			<script>
-
 			async function init() {
 			//function init() {
 			const data = await d3.csv("https://raw.githubusercontent.com/bipinkarnati/bipinkarnati.github.io/master/USTotals.csv");
@@ -60,7 +59,7 @@
 																	&& d.State != "WRO"})
 			//Append options to the dropdown
 			console.log(stateData)
-			d3.selectAll("options")
+			d3.select("div#dropdown").selectAll("option")
 			.data(d3.map(stateData, function(d) {return d.State}).keys())
 			.enter()
 			.append("option")
