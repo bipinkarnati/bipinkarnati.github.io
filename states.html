@@ -119,6 +119,7 @@
 			.x(function(d) {return xs(d.Year)})
 			.y(function(d) {return ys(d.MPersons)});
 				// draw line chart
+			console.log(region_col_map[state_data.Region])
 			var line1 = svg1.append("path")
 			.datum(state_data)
 			.transition()
