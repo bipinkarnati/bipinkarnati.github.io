@@ -126,8 +126,8 @@
 			.transition()
 			.duration(1000)
 			.attr("fill","none")
-			.attr("stroke", function (d) {return cs(d.Region)}) //scaleOrdinal doesn't work
-			//.attr("stroke","steelblue")
+			//.attr("stroke", function (d) {return cs(d.Region)}) //scaleOrdinal doesn't work
+			.attr("stroke","steelblue")
 			.attr("stroke-width", 3.0)
 			.attr("d", line);			
 			
