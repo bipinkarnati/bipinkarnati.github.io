@@ -32,7 +32,7 @@
 			<select id="options">
 			</select>	
 		</div>
-		<div id="byregions" class="svgregions" align="center"></div>
+		<div id="bystate" class="svgstate" align="center"></div>
 			<script>
 			async function init() {
 			//function init() {
@@ -90,6 +90,7 @@
 			console.log(state_data)
 			
 			if (!stateChange) {
+			d3.select("div#bystate").select("svg").remove();
 
 			var xs = d3.scaleBand().domain(state_data.map(function (d) {return d.Year})).range([0,700])
 			//var ys = d3.scaleLinear().domain(d3.extent(state_data.map(function(d) {return d.MPersons}))).range([400,0])
@@ -99,7 +100,7 @@
 			height = 400
 			width = 700
 			var margin = {left:50, right:50, top:50, bottom:50}
-			var svg1 = d3.select("div#byregions").append("svg")
+			var svg1 = d3.select("div#bystate").append("svg")
 				.attr("width", width + margin.left + margin.right)
 				.attr("height",height + margin.top + margin.bottom)
 				.append("g")
