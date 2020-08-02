@@ -119,13 +119,13 @@
 			.x(function(d) {return xs(d.Year)})
 			.y(function(d) {return ys(d.MPersons)});
 				// draw line chart
-			console.log(region_col_map[state_data.Region])
+			//console.log(region_col_map[state_data.Region])
 			var line1 = svg1.append("path")
 			.datum(state_data)
 			.transition()
 			.duration(1000)
 			.attr("fill","none")
-			.attr("stroke", function(d, i) {return region_col_map[d.Region]})
+			.attr("stroke", function(d) {return (region_col_map[d.Region])})
 			.attr("stroke-width", 3.0)
 			.attr("d", line);			
 			
