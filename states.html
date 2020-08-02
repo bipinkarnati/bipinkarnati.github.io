@@ -84,8 +84,8 @@
 			function drawChart(state_data, data){
 
 			var xs = d3.scaleBand().domain(state_data.map(function (d) {return d.Year})).range([0,700])
-			var ys = d3.scaleLinear().domain([0,13]).range([400,0])
-			//var hs = d3.scaleLinear().domain([0,50]).range([0,400])
+			var ys = d3.scaleLinear().domain(d3.extent(state_data.map(function(d) {return d.MPersons}))).range([400,0])
+			
 			const color = ['pink','lightskyblue','yellow','mediumpurple','darksalmon','palegreen','skyblue'];
 			height = 400
 			width = 700
@@ -108,7 +108,7 @@
 			
 				// y axis
 			svg1.append("g")
-			.call(d3.axisLeft(ys).tickValues(["1","3","5","7","9","11","13"])
+			.call(d3.axisLeft(ys)
 			.tickFormat(d3.format("~s")));
 				
 				//x axis
