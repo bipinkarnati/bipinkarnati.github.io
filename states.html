@@ -79,11 +79,11 @@
 								 data.filter(function(d) {return d.State == "WRO"})]
 			console.log(state_data)
 			
-			drawChart(state_data)		
+			drawChart(state_data, data)		
 			}
-			function drawChart(state_data){
+			function drawChart(state_data, data){
 
-			var xs = d3.scaleBand().domain(state_data.map(function (d) {return d.Year}).keys()).range([0,700])
+			var xs = d3.scaleBand().domain(data.map(function (d) {return d.Year})).range([0,700])
 			var ys = d3.scaleLinear().domain([0,13]).range([400,0])
 			//var hs = d3.scaleLinear().domain([0,50]).range([0,400])
 			const color = ['pink','lightskyblue','yellow','mediumpurple','darksalmon','palegreen','skyblue'];
@@ -104,7 +104,7 @@
 			.enter()
 			.append("path")
 			.attr("fill","none")
-			.attr("stroke", function(d, i) {return color[i]})
+			.attr("stroke", function(d, i) {return color[1]})
 			.attr("stroke-width", 2.0)
 			.attr("d", line);			
 			
