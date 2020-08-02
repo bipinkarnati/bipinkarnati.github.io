@@ -65,7 +65,7 @@
 			.attr("value", function(d) {return d})
 			.text(function(d) {return d});
 
-			var state = "US"
+			var state = "Alabama"
 			console.log(data)
 			var xs = d3.scaleBand().domain(data.map(function (d) {return d.Year})).range([0,700])
 			var ys = d3.scaleLinear().domain([0,13]).range([400,0])
@@ -94,8 +94,10 @@
 			const line = d3.line()
 			.x(function(d) {return xs(d.Year)})
 			.y(function(d) {return ys(d.MPersons)});
-
-			// draw line chart
+			drawChart(stateData)		
+			}
+			function drawChart(stateData){
+				// draw line chart
 			svg1.selectAll(".line")
 			.data(state_data)
 			.enter()
@@ -103,8 +105,7 @@
 			.attr("fill","none")
 			.attr("stroke", function(d, i) {return color[i]})
 			.attr("stroke-width", 2.0)
-			.attr("d", line);
-			
+			.attr("d", line);			
 			
 				// y axis
 			svg1.append("g")
@@ -114,7 +115,7 @@
 				//x axis
 			svg1.append("g")
 			.attr("transform","translate("+ 0 +","+ (height + 0)+")")
-			.call(d3.axisBottom(xs));
+			.call(d3.axisBottom(xs).tickFormat(d3.format("~s")));
 				
 				//y label
 			svg1.append("text")
@@ -134,7 +135,7 @@
 			.style("text-anchor","middle")
 			.style("font-size","14px")
 			.style("font-family","sans-serif")
-			.text("Year");			
+			.text("Year");	
 			}
 			</script>		
 		<footer>
