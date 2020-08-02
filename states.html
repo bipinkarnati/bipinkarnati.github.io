@@ -64,20 +64,19 @@
 			.append("option")
 			.attr("value", function(d) {return d})
 			.text(function(d) {return d});
-
+			//default state
 			var state = "Alabama"
-			var stateChange = false
 			//console.log(data)		
 				
 				//chart data
 			
-			drawChart(data, state, stateChange)	
+			drawChart(data, state)	
 			d3.select("#options").on("change", function(d) {
 				var selected_state = d3.select(this).property("value")
-				drawChart(data, selected_state, false)
+				drawChart(data, selected_state)
 			})	
 			}
-			function drawChart(data, state, stateChange){
+			function drawChart(data, state){
 
 			var state_data = data.filter(function(d) {return d.State == state});
 			const region_data = [data.filter(function(d) {return d.State == "NERO"}),
@@ -89,12 +88,12 @@
 								 data.filter(function(d) {return d.State == "WRO"})]
 			console.log(state_data)
 			
-			if (!stateChange) {
+			// remove existing svg
 			d3.select("div#bystate").select("svg").remove();
 
 			var xs = d3.scaleBand().domain(state_data.map(function (d) {return d.Year})).range([0,700])
 			//var ys = d3.scaleLinear().domain(d3.extent(state_data.map(function(d) {return d.MPersons}))).range([400,0])
-			var ys = d3.scaleLinear().domain([0,4.5]).range([400,0])
+			var ys = d3.scaleLinear().domain([0,d3.max(function(d) {return d.MPersons})]).range([400,0])
 			
 			const color = ['pink','lightskyblue','yellow','mediumpurple','darksalmon','palegreen','skyblue'];
 			height = 400
@@ -146,26 +145,8 @@
 			.style("text-anchor","middle")
 			.style("font-size","14px")
 			.style("font-family","sans-serif")
-			.text("Year");
+			.text("Year");			
 			}
-			else {
-			var state_data = data.filter(function(d) {return d.State == state});
-			console.log("State Change")
-			line1
-			.datum(state_data)
-			.transition()
-			.duration(1000)
-			.attr("fill","none")
-			.attr("stroke", function(d, i) {return color[1]})
-			.attr("stroke-width", 3.0)
-			.attr("d", line);
-			}	
-			}
-			//update chart upon change in state
-			function updateChart(selected_state, data){
-
-			}
-
 			</script>		
 		<footer>
     		<ul>
