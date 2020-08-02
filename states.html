@@ -126,7 +126,7 @@
 			.transition()
 			.duration(1000)
 			.attr("fill","none")
-			.attr("stroke", region_col_map[function (d) {return cd(d.Region)}]) //scaleOrdinal doesn't work
+			.attr("stroke", region_col_map[function (d) {return region_col_map[d.Region]}]) //scaleOrdinal doesn't work
 			.attr("stroke-width", 3.0)
 			.attr("d", line);			
 			
