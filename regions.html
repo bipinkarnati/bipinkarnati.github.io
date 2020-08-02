@@ -83,7 +83,7 @@
 			.enter()
 			.append("path")
 			.attr("fill","none")
-			.attr("stroke", function(d, i) {return cs[i]})
+			.attr("stroke", function(d, i) {return cs(d.State)})
 			.attr("stroke-width", 2.0)
 			.attr("d", line);
 			
