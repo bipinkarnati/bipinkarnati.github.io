@@ -74,7 +74,7 @@
 			drawChart(data, state, stateChange)	
 			d3.select("#options").on("change", function(d) {
 				var selected_state = d3.select(this).property("value")
-				drawChart(data, selected_state, true)
+				drawChart(data, selected_state, false)
 			})	
 			}
 			function drawChart(data, state, stateChange){
