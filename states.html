@@ -99,14 +99,15 @@
 			region_col_map["MPRO"] = "palegreen";
 			region_col_map["WRO"] = "skyblue";
 			console.log(region_col_map);
-			const regions = ["NERO","MARO","SERO","MWRO","SWRO","MPRO","WRO"]
-			var cs = d3.scaleOrdinal().domain(regions).range(['pink','lightskyblue','yellow','mediumpurple','darksalmon','palegreen','skyblue'])
+			var regions = ["NERO","MARO","SERO","MWRO","SWRO","MPRO","WRO"]
+			
 						
 			// remove existing svg
 			d3.select("div#bystate").select("svg").remove();
 
 			var xs = d3.scaleBand().domain(state_data.map(function (d) {return d.Year})).range([0,700])
 			var ys = d3.scaleLinear().domain([0, (0.2 + d3.max(state_data, function(d) {return d.MPersons}))]).range([400,0])
+			var cs = d3.scaleOrdinal().domain(regions).range(["pink","lightskyblue","yellow","mediumpurple","darksalmon","palegreen","skyblue"])
 			
 			//const color = ['pink','lightskyblue','yellow','mediumpurple','darksalmon','palegreen','skyblue'];
 			height = 400
@@ -129,7 +130,7 @@
 			.transition()
 			.duration(1000)
 			.attr("fill","none")
-			.attr("stroke", function (d) {return cs(d.Region)})
+			.attr("stroke", function (d) {return cs(d.Region);})
 			.attr("stroke-width", 3.0)
 			.attr("d", line);			
 			
