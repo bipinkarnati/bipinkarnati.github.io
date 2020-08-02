@@ -46,6 +46,9 @@
 				d.CostPerPerson = +d.CostPerPerson;
 				d.MPersons = +d.MPersons;
 				d.State = d.State;
+				d.Region = d.Region;
+				d.BCost = d.BCost;
+				d.MCost = d.MCost;
 			});	
 			// get list of states from data for dropdown
 			const stateData = data.filter(function(d) {return d && d.State != "US" 
@@ -87,13 +90,20 @@
 								 data.filter(function(d) {return d.State == "MPRO"}),
 								 data.filter(function(d) {return d.State == "WRO"})]
 			console.log(state_data)
-			
+			let region_col_map = {}
+			region_col_map["NERO"] = "pink";
+			region_col_map["MARO"] = "lightskyblue";
+			region_col_map["SERO"] = "yellow";
+			region_col_map["MWRO"] = "mediumpurple";
+			region_col_map["SWRO"] = "darksalmon";
+			region_col_map["MPRO"] = "palegreen";
+			region_col_map["WRO"] = "skyblue";
+						
 			// remove existing svg
 			d3.select("div#bystate").select("svg").remove();
 
 			var xs = d3.scaleBand().domain(state_data.map(function (d) {return d.Year})).range([0,700])
-			//var ys = d3.scaleLinear().domain(d3.extent(state_data.map(function(d) {return d.MPersons}))).range([400,0])
-			var ys = d3.scaleLinear().domain([0, (0.3 + d3.max(state_data, function(d) {return d.MPersons}))]).range([400,0])
+			var ys = d3.scaleLinear().domain([0, (0.2 + d3.max(state_data, function(d) {return d.MPersons}))]).range([400,0])
 			
 			const color = ['pink','lightskyblue','yellow','mediumpurple','darksalmon','palegreen','skyblue'];
 			height = 400
@@ -113,7 +123,7 @@
 			.transition()
 			.duration(1000)
 			.attr("fill","none")
-			.attr("stroke", function(d, i) {return color[1]})
+			.attr("stroke", function(d, i) {return region_col_map[d.Region]})
 			.attr("stroke-width", 3.0)
 			.attr("d", line);			
 			
