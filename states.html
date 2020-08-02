@@ -49,15 +49,15 @@
 			});	
 			// get list of states from data for dropdown
 			const stateData = data.filter(function(d) {return d && d.State != "US" 
-																	&& d.State != "NERO"
-																	&& d.State != "MARO"
-																	&& d.State != "SERO"
-																	&& d.State != "MWRO"
-																	&& d.State != "SWRO"
-																	&& d.State != "MPRO"
-																	&& d.State != "WRO"})
+																&& d.State != "NERO"
+																&& d.State != "MARO"
+																&& d.State != "SERO"
+																&& d.State != "MWRO"
+																&& d.State != "SWRO"
+																&& d.State != "MPRO"
+																&& d.State != "WRO"})
 			//Append options to the dropdown
-			console.log(stateData)
+			//console.log(stateData)
 			d3.select("#options").selectAll("option")
 			.data(d3.map(stateData, function(d) {return d.State}).keys())
 			.enter()
@@ -77,13 +77,13 @@
 								 data.filter(function(d) {return d.State == "SWRO"}),
 								 data.filter(function(d) {return d.State == "MPRO"}),
 								 data.filter(function(d) {return d.State == "WRO"})]
-			//console.log(region_data)
+			console.log(state_data)
 			
 			drawChart(state_data)		
 			}
 			function drawChart(state_data){
 
-			var xs = d3.scaleBand().domain(state_data.map(function (d) {return d.Year})).range([0,700])
+			var xs = d3.scaleBand().domain(state_data.map(function (d) {return d.Year}).keys()).range([0,700])
 			var ys = d3.scaleLinear().domain([0,13]).range([400,0])
 			//var hs = d3.scaleLinear().domain([0,50]).range([0,400])
 			const color = ['pink','lightskyblue','yellow','mediumpurple','darksalmon','palegreen','skyblue'];
