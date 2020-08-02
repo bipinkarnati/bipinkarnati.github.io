@@ -58,7 +58,7 @@
 																	&& d.State != "WRO"})
 			//Append options to the dropdown
 			console.log(stateData)
-			d3.select("div#dropdown").select("options")
+			d3.select("#options").selectAll("option")
 			.data(d3.map(stateData, function(d) {return d.State}).keys())
 			.enter()
 			.append("option")
