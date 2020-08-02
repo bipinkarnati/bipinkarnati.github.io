@@ -79,6 +79,8 @@
 			.data(region_data)
 			.enter()
 			.append("path")
+			.transition()
+			.duration(2000)
 			.attr("fill","none")
 			.attr("stroke", function(d, i) {return cs(i)})
 			.attr("stroke-width", 2.0)
