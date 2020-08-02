@@ -100,7 +100,7 @@
 			.y(function(d) {return ys(d.MPersons)});
 				// draw line chart
 			svg1.append("path")
-			.datum(state_data)
+			.data(state_data)
 			.attr("fill","none")
 			.attr("stroke", function(d, i) {return color[1]})
 			.attr("stroke-width", 2.0)
