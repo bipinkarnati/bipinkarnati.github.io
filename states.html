@@ -150,7 +150,7 @@
 			else {
 			var state_data = data.filter(function(d) {return d.State == state});
 			console.log("State Change")
-			svg1.append("path")
+			line1
 			.datum(state_data)
 			.transition()
 			.duration(1000)
