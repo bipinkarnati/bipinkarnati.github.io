@@ -127,7 +127,7 @@
 			.transition()
 			.duration(1000)
 			.attr("fill","none")
-			.attr("stroke", region_col_map[function (d) {return d.Region}])
+			.attr("stroke", region_col_map[String(function (d) {return d.Region})])
 			.attr("stroke-width", 3.0)
 			.attr("d", line);			
 			
