@@ -84,7 +84,8 @@
 			function drawChart(state_data, data){
 
 			var xs = d3.scaleBand().domain(state_data.map(function (d) {return d.Year})).range([0,700])
-			var ys = d3.scaleLinear().domain(d3.extent(state_data.map(function(d) {return d.MPersons}))).range([400,0])
+			//var ys = d3.scaleLinear().domain(d3.extent(state_data.map(function(d) {return d.MPersons}))).range([400,0])
+			var ys = d3.scaleLinear().domain([0,4.5]).range([400,0])
 			
 			const color = ['pink','lightskyblue','yellow','mediumpurple','darksalmon','palegreen','skyblue'];
 			height = 400
