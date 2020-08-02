@@ -130,7 +130,7 @@
 			.transition()
 			.duration(1000)
 			.attr("fill","none")
-			.attr("stroke", function (d) {return cs(d.Region);})
+			.attr("stroke", function (d) {return d.RegionColor;}) //scaleOrdinal doesn't work
 			.attr("stroke-width", 3.0)
 			.attr("d", line);			
 			
