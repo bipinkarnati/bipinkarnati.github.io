@@ -99,6 +99,8 @@
 			region_col_map["MPRO"] = "palegreen";
 			region_col_map["WRO"] = "skyblue";
 			console.log(region_col_map);
+			const regions = ["NERO","MARO","SERO","MWRO","SWRO","MPRO","WRO"]
+			var cs = d3.scaleOrdinal().domain(regions).range(['pink','lightskyblue','yellow','mediumpurple','darksalmon','palegreen','skyblue'])
 						
 			// remove existing svg
 			d3.select("div#bystate").select("svg").remove();
@@ -119,15 +121,15 @@
 			.x(function(d) {return xs(d.Year)})
 			.y(function(d) {return ys(d.MPersons)});
 				// draw line chart
-			console.log(state_data.map(function (d) {return d.Region}).keys())
-			var color = region_col_map[state_data.map(function (d) {return d.Region}).keys()[0]];
-			console.log(color)
+			//console.log(state_data.map(function (d) {return d.Region}).keys())
+			//var color = region_col_map[state_data.map(function (d) {return d.Region}).keys()[0]];
+			//console.log(color)
 			var line1 = svg1.append("path")
 			.datum(state_data)
 			.transition()
 			.duration(1000)
 			.attr("fill","none")
-			.attr("stroke", region_col_map[String(function (d) {return d.Region})])
+			.attr("stroke", function (d) {return cs(d.Region)})
 			.attr("stroke-width", 3.0)
 			.attr("d", line);			
 			
