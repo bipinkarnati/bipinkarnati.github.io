@@ -29,8 +29,8 @@
 	</head>
 	<body onload='init()';>
 		<div id="dropdown" class="states">
-			<select>
-				<option class="options" value="default">Alabama</option>
+			<select class="options">
+				//<option class="options" value="default">Alabama</option>
 			</select>	
 		</div>
 		<div id="byregions" class="svgregions" align="center"></div>			
@@ -61,7 +61,7 @@
 																	&& d.State != "WRO"})
 			//Append options to the dropdown
 			console.log(stateData)
-			d3.selectAll("#options")
+			d3.selectAll("options")
 			.data(d3.map(stateData, function(d) {return d.State}).keys())
 			.enter()
 			.append("option")
