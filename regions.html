@@ -24,8 +24,6 @@
 				is a federal program that provides food-purchasing assistance for low and no-income people. It is a federal aid program, administered by 
 				the United States Department of Agriculture under the Food and Nutrition Service (FNS), though benefits are distributed by specific departments 
 				of U.S. states.<br>
-				Source: <li><a href="https://en.wikipedia.org/wiki/Supplemental_Nutrition_Assistance_Program">Wikipedia/SNAP</a></li>
-					<li><a href="https://www.fns.usda.gov/pd/supplemental-nutrition-assistance-program-snap">USDA-FNS</a></li>
 			</p>
 		</div>
 	</head>
@@ -50,9 +48,8 @@
 			var regions = ["NERO","MARO","SERO","MWRO","SWRO","MPRO","WRO"]
 			var xs = d3.scaleBand().domain(data.map(function (d) {return d.Year})).range([0,700])
 			var ys = d3.scaleLinear().domain([0,13]).range([400,0])
-			var cs = d3.scaleOrdinal(["#FF88C4","#79D7FF","#FFDE6C","#C891FF","#FFA264","#B5EC7D","#6FCAE1"])
-			//var hs = d3.scaleLinear().domain([0,50]).range([0,400])
-			const color = ['pink','lightskyblue','yellow','mediumpurple','darksalmon','palegreen','skyblue'];
+			var cs = d3.scaleOrdinal(["#FF88C4","#79D7FF","#FFDE6C","#C891FF","#FFA264","#B5EC7D","#6FCAE1"]);
+			//const color = ['pink','lightskyblue','yellow','mediumpurple','darksalmon','palegreen','skyblue'];
 			height = 400
 			width = 700
 			var margin = {left:50, right:50, top:50, bottom:50}
