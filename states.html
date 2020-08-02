@@ -83,7 +83,7 @@
 			}
 			function drawChart(state_data, data){
 
-			var xs = d3.scaleBand().domain(data.map(function (d) {return d.Year})).range([0,700])
+			var xs = d3.scaleBand().domain(state_data.map(function (d) {return d.Year})).range([0,700])
 			var ys = d3.scaleLinear().domain([0,13]).range([400,0])
 			//var hs = d3.scaleLinear().domain([0,50]).range([0,400])
 			const color = ['pink','lightskyblue','yellow','mediumpurple','darksalmon','palegreen','skyblue'];
