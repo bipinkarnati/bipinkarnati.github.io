@@ -87,7 +87,7 @@
 						.enter()
 						.append("path")
 						.transition()
-						.duration(5000)
+						.duration(3000)
 						.attr("fill","none")
 						.attr("stroke", function(d, i) {return cs(i)})
 						.attr("stroke-width", 2.0)
@@ -123,7 +123,28 @@
 						.style("text-anchor","middle")
 						.style("font-size","14px")
 						.style("font-family","sans-serif")
-						.text("Year");			
+						.text("Year");
+
+							//annotation
+						svg1.append("text")
+						.transition()
+						.delay(3000)
+						.duration(1000)
+						.attr("x", 110)
+						.attr("y", 120)
+						.text("Southeast Regional Office");
+							//append dotted line
+						svg1.append("line")
+						.transition()
+						.delay(3000)
+						.duration(1000)
+						.attr("x1", 130)
+						.attr("x2", 170)
+						.attr("y1", 120)
+						.attr("y2", 120)
+						.attr("stroke", "#FFDE6C")
+						.attr("stroke-width", "2");
+						
 						}
 						</script>				
 				</td>
