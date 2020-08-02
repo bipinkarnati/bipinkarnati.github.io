@@ -91,9 +91,9 @@
 								 data.filter(function(d) {return d.State == "WRO"})]
 			console.log(region_data)
 			
-			drawChart(stateData,svg1)		
+			drawChart(state_data,svg1)		
 			}
-			function drawChart(stateData,svg1){
+			function drawChart(state_data,svg1){
 			const line = d3.line()
 			.x(function(d) {return xs(d.Year)})
 			.y(function(d) {return ys(d.MPersons)});
