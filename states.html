@@ -38,7 +38,7 @@
 			//function init() {
 			const data = await d3.csv("https://raw.githubusercontent.com/bipinkarnati/bipinkarnati.github.io/master/USTotals.csv");
 			data.forEach(function(d) {
-				d.Year = +d.Year;
+				d.Year = d.Year;
 				d.Households = +d.Households;
 				d.Persons = +d.Persons;
 				d.TotalCost = +d.TotalCost;
