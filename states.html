@@ -106,7 +106,7 @@
 			var xs = d3.scaleBand().domain(state_data.map(function (d) {return d.Year})).range([0,700])
 			var ys = d3.scaleLinear().domain([0, (0.2 + d3.max(state_data, function(d) {return d.MPersons}))]).range([400,0])
 			
-			const color = ['pink','lightskyblue','yellow','mediumpurple','darksalmon','palegreen','skyblue'];
+			//const color = ['pink','lightskyblue','yellow','mediumpurple','darksalmon','palegreen','skyblue'];
 			height = 400
 			width = 700
 			var margin = {left:50, right:50, top:50, bottom:50}
@@ -119,13 +119,13 @@
 			.x(function(d) {return xs(d.Year)})
 			.y(function(d) {return ys(d.MPersons)});
 				// draw line chart
-			console.log(region_col_map["NERO"])
+			var color = state_data.map(function (d) {return d.Region}).keys();
 			var line1 = svg1.append("path")
 			.datum(state_data)
 			.transition()
 			.duration(1000)
 			.attr("fill","none")
-			.attr("stroke", function(d) {return (region_col_map[d.Region])})
+			.attr("stroke", color)
 			.attr("stroke-width", 3.0)
 			.attr("d", line);			
 			
