@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<script src='https://d3js.org/d3.v5.min.js'></script>
+	<style> rect {fill: #DCEDC8; stroke: black; }</style>
+	<head>
+		<title>USDA SNAP Benefits Issuance</title>
+		<!-- link to main stylesheet -->
+		<link rel="stylesheet" type="text/css" href="/css/main.css">
+		<div class="header">
+        		<h2>Number of People Assisted by US Food and Nutrition Service Program SNAP</h2>				
+    		</div>
+		<div class="pages">
+			<nav>
+    			<ul>
+        		<li><a href="/">Home</a></li>
+	        	<li><a href="/regions">Beneficiaries By Regions</a></li>
+				    <li><a href="/states">Beneficiaries By State</a></li>
+    			</ul>
+			</nav>   
+		</div>
+		<div class="intro">
+			<p>
+				In the United States, the Supplemental Nutrition Assistance Program (SNAP), formerly yet still commonly known as the Food Stamp Program, 
+				is a federal program that provides food-purchasing assistance for low and no-income people. It is a federal aid program, administered by 
+				the United States Department of Agriculture under the Food and Nutrition Service (FNS), though benefits are distributed by specific departments 
+				of U.S. states.<br>
+				Source: <li><a href="https://en.wikipedia.org/wiki/Supplemental_Nutrition_Assistance_Program">Wikipedia/SNAP</a></li>
+					<li><a href="https://www.fns.usda.gov/pd/supplemental-nutrition-assistance-program-snap">USDA-FNS</a></li>
+			</p>
+		</div>
+	</head>
+	<body onload='init()';>
+		<div id="byregions" class="svgregions" align="center"></div>			
+		/*<svg width=800 height=500></svg>*/
+			<script>
+			async function init() {
+			//function init() {
+			const data = await d3.csv("https://raw.githubusercontent.com/bipinkarnati/bipinkarnati.github.io/master/USTotals.csv");
+			data.forEach(function(d) {
+				d.Year = +d.Year;
+				d.Households = +d.Households;
+				d.Persons = +d.Persons;
+				d.TotalCost = +d.TotalCost;
+				d.CostPerHousehold = +d.CostPerHousehold;
+				d.CostPerPerson = +d.CostPerPerson;
+				d.MPersons = +d.MPersons;
+				d.State = d.State;
+			});				
+			var state = "US"
+			console.log(data)
+			var xs = d3.scaleBand().domain(data.map(function (d) {return d.Year})).range([0,700])
+			var ys = d3.scaleLinear().domain([0,13]).range([400,0])
+			//var hs = d3.scaleLinear().domain([0,50]).range([0,400])
+			const color = ['pink','lightskyblue','yellow','mediumpurple','darksalmon','palegreen','skyblue'];
+			height = 400
+			width = 700
+			var margin = {left:50, right:50, top:50, bottom:50}
+			var svg1 = d3.select("div#byregions").append("svg")
+				.attr("width", width + margin.left + margin.right)
+				.attr("height",height + margin.top + margin.bottom)
+				.append("g")
+				.attr("transform","translate(" + margin.left + "," + margin.top +")");
+				
+				//chart data
+			const state_data = data.filter(function(d) {return d.State == state});
+			const region_data = [data.filter(function(d) {return d.State == "NERO"}),
+								 data.filter(function(d) {return d.State == "MARO"}),
+								 data.filter(function(d) {return d.State == "SERO"}),
+								 data.filter(function(d) {return d.State == "MWRO"}),
+								 data.filter(function(d) {return d.State == "SWRO"}),
+								 data.filter(function(d) {return d.State == "MPRO"}),
+								 data.filter(function(d) {return d.State == "WRO"})]
+			console.log(region_data)
+			
+			const line = d3.line()
+			.x(function(d) {return xs(d.Year)})
+			.y(function(d) {return ys(d.MPersons)});
+
+			// draw line chart
+			svg1.selectAll(".line")
+			.data(region_data)
+			.enter()
+			.append("path")
+			.attr("fill","none")
+			.attr("stroke", function(d, i) {return color[i]})
+			.attr("stroke-width", 2.0)
+			.attr("d", line);
+			
+			
+				// y axis
+			svg1.append("g")
+			.call(d3.axisLeft(ys).tickValues(["1","3","5","7","9","11","13"])
+			.tickFormat(d3.format("~s")));
+				
+				//x axis
+			svg1.append("g")
+			.attr("transform","translate("+ 0 +","+ (height + 0)+")")
+			.call(d3.axisBottom(xs));
+				
+				//y label
+			svg1.append("text")
+			.attr("transform","rotate(-90)")
+			.attr("y", 0 - (margin.left))
+			.attr("x", 0 - (height / 2))
+			.attr("dy","1.5em")
+			.style("text-anchor","middle")
+			.style("font-size","14px")
+			.style("font-family","sans-serif")
+			.text("Number of Persons (in Millinos)");
+				
+				//x label
+			svg1.append("text")
+			.attr("transform","translate(" + width / 2 + "," + (height + margin.top) + ")")
+			.attr("dx","1.5em")
+			.style("text-anchor","middle")
+			.style("font-size","14px")
+			.style("font-family","sans-serif")
+			.text("Year");			
+			}
+			</script>		
+		<footer>
+    		<ul>
+        		<p>
+					<b>Desclaimer:</b> This site is built for learning purpose only.
+				</p>
+		</ul>
+		</footer>
+	</body>
+</html>
