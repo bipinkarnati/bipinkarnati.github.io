@@ -107,7 +107,7 @@
 
 			var xs = d3.scaleBand().domain(state_data.map(function (d) {return d.Year})).range([0,700])
 			var ys = d3.scaleLinear().domain([0, (0.2 + d3.max(state_data, function(d) {return d.MPersons}))]).range([400,0])
-			var cs = d3.scaleOrdinal().domain(regions).range(["pink","lightskyblue","yellow","mediumpurple","darksalmon","palegreen","skyblue"])
+			var cs = d3.scaleOrdinal().domain(regions).range(["#FF88C4","#79D7FF","#FFDE6C","#C891FF","#FFA264","#B5EC7D","#6FCAE1"])
 			
 			//const color = ['pink','lightskyblue','yellow','mediumpurple','darksalmon','palegreen','skyblue'];
 			height = 400
