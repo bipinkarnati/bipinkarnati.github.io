@@ -66,10 +66,20 @@
 			.text(function(d) {return d});
 
 			var state = "Alabama"
+			var stateChange = false
 			//console.log(data)		
 				
 				//chart data
-			const state_data = data.filter(function(d) {return d.State == state});
+			
+			drawChart(data, state, stateChange)	
+			d3.select("#options").on("change", function(d) {
+				var selected_state = d3.select(this).property("value")
+				drawChart(data, selected_state, true)
+			})	
+			}
+			function drawChart(data, state, stateChange){
+
+			var state_data = data.filter(function(d) {return d.State == state});
 			const region_data = [data.filter(function(d) {return d.State == "NERO"}),
 								 data.filter(function(d) {return d.State == "MARO"}),
 								 data.filter(function(d) {return d.State == "SERO"}),
@@ -79,9 +89,7 @@
 								 data.filter(function(d) {return d.State == "WRO"})]
 			console.log(state_data)
 			
-			drawChart(state_data, data)		
-			}
-			function drawChart(state_data, data){
+			if (!stateChange) {
 
 			var xs = d3.scaleBand().domain(state_data.map(function (d) {return d.Year})).range([0,700])
 			//var ys = d3.scaleLinear().domain(d3.extent(state_data.map(function(d) {return d.MPersons}))).range([400,0])
@@ -96,15 +104,17 @@
 				.attr("height",height + margin.top + margin.bottom)
 				.append("g")
 				.attr("transform","translate(" + margin.left + "," + margin.top +")");
-			const line = d3.line()
+			var line = d3.line()
 			.x(function(d) {return xs(d.Year)})
 			.y(function(d) {return ys(d.MPersons)});
 				// draw line chart
 			svg1.append("path")
 			.datum(state_data)
+			.transition()
+			.duration(1000)
 			.attr("fill","none")
 			.attr("stroke", function(d, i) {return color[1]})
-			.attr("stroke-width", 2.0)
+			.attr("stroke-width", 3.0)
 			.attr("d", line);			
 			
 				// y axis
@@ -135,8 +145,26 @@
 			.style("text-anchor","middle")
 			.style("font-size","14px")
 			.style("font-family","sans-serif")
-			.text("Year");	
+			.text("Year");
 			}
+			else {
+			var state_data = data.filter(function(d) {return d.State == state});
+			console.log("State Change")
+			svg1.append("path")
+			.datum(state_data)
+			.transition()
+			.duration(1000)
+			.attr("fill","none")
+			.attr("stroke", function(d, i) {return color[1]})
+			.attr("stroke-width", 3.0)
+			.attr("d", line);
+			}	
+			}
+			//update chart upon change in state
+			function updateChart(selected_state, data){
+
+			}
+
 			</script>		
 		<footer>
     		<ul>
