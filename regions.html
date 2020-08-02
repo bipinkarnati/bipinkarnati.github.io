@@ -50,7 +50,7 @@
 			var regions = ["NERO","MARO","SERO","MWRO","SWRO","MPRO","WRO"]
 			var xs = d3.scaleBand().domain(data.map(function (d) {return d.Year})).range([0,700])
 			var ys = d3.scaleLinear().domain([0,13]).range([400,0])
-			var cs = d3.scaleOrdinal().domain(regions).range(["#FF88C4","#79D7FF","#FFDE6C","#C891FF","#FFA264","#B5EC7D","#6FCAE1"])
+			var cs = d3.scaleOrdinal(["#FF88C4","#79D7FF","#FFDE6C","#C891FF","#FFA264","#B5EC7D","#6FCAE1"])
 			//var hs = d3.scaleLinear().domain([0,50]).range([0,400])
 			const color = ['pink','lightskyblue','yellow','mediumpurple','darksalmon','palegreen','skyblue'];
 			height = 400
@@ -83,7 +83,7 @@
 			.enter()
 			.append("path")
 			.attr("fill","none")
-			.attr("stroke", function(d, i) {return cs(d.State)})
+			.attr("stroke", function(d, i) {return cs(i)})
 			.attr("stroke-width", 2.0)
 			.attr("d", line);
 			
