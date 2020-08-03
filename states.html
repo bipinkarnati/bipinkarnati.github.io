@@ -32,7 +32,7 @@
 			<select id="options">
 			</select>	
 		</div>
-		<div id="bystate" class="svgstate" align="center"></div>
+		<div id="bystate" class="svgstate" align="center">
 			<script>
 			async function init() {
 			//function init() {
@@ -85,15 +85,15 @@
 			var state_data = data.filter(function(d) {return d && d.State == state});
 			
 			console.log(state_data)
-			let region_col_map = {}
-			region_col_map["NERO"] = "pink";
-			region_col_map["MARO"] = "lightskyblue";
-			region_col_map["SERO"] = "yellow";
-			region_col_map["MWRO"] = "mediumpurple";
-			region_col_map["SWRO"] = "darksalmon";
-			region_col_map["MPRO"] = "palegreen";
-			region_col_map["WRO"] = "skyblue";
-			console.log(region_col_map);
+			// let region_col_map = {}
+			// region_col_map["NERO"] = "pink";
+			// region_col_map["MARO"] = "lightskyblue";
+			// region_col_map["SERO"] = "yellow";
+			// region_col_map["MWRO"] = "mediumpurple";
+			// region_col_map["SWRO"] = "darksalmon";
+			// region_col_map["MPRO"] = "palegreen";
+			// region_col_map["WRO"] = "skyblue";
+			// console.log(region_col_map);
 			var regions = ["NERO","MARO","SERO","MWRO","SWRO","MPRO","WRO"]
 			
 						
@@ -166,7 +166,8 @@
 			.style("font-family","sans-serif")
 			.text("Year");			
 			}
-			</script>		
+			</script>	
+			</div>	
 		<footer>
     		<ul>
 				<p>
