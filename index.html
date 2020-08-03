@@ -68,7 +68,7 @@
 			var tooltip = d3.select("#tooltip");				
 			var state = "US"
 			console.log(usdata)
-			var xs = d3.scaleBand().domain(usdata.map(function (d) {return parseInt(d.Year)})).range([0,700])
+			var xs = d3.scaleBand().domain(usdata.map(function (d) {return parsseInt(d.Year)})).range([0,700])
 			var ys = d3.scaleLinear().domain([0,50]).range([400,0])
 			var hs = d3.scaleLinear().domain([0,50]).range([0,400])
 			height = 400
