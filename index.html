@@ -43,7 +43,28 @@
 			<script>
 			//async function init() {
 			//function init() {
-			const dataset = d3.csv("https://raw.githubusercontent.com/bipinkarnati/bipinkarnati.github.io/master/USTotals.csv", loaddata, function(data){
+			const dataset = d3.csv("https://raw.githubusercontent.com/bipinkarnati/bipinkarnati.github.io/master/USTotals.csv")
+			.then(function(data){return data});
+			const usdata = dataset.then(function(v) {
+				return Promise.all(v.map(function(d){
+					return [d.Year, d.MPersons, d.BCost]
+				}))
+			});
+			//loaddata(data);
+			// function loaddata(data){
+			// data.forEach(function(d) {
+			// 	d.Year = +d.Year;
+			// 	d.Households = +d.Households;
+			// 	d.Persons = +d.Persons;
+			// 	d.TotalCost = +d.TotalCost;
+			// 	d.CostPerHousehold = +d.CostPerHousehold;
+			// 	d.CostPerPerson = +d.CostPerPerson;
+			// 	d.MPersons = +d.MPersons;
+			// 	d.State = d.State;
+			// 	d.BCost = +d.BCost;
+			// });
+			// }
+			
 			var tooltip = d3.select("#tooltip");				
 			var state = "US"
 			console.log(usdata)
@@ -151,27 +172,6 @@
 			.attr("stroke", "steelblue")
 			.attr("stroke-width", "2")
 			.attr("stroke-dasharray", "10");		
-			});
-			// .then(function(data){return data});
-			// const usdata = dataset.then(function(v) {
-			// 	return Promise.all(v.map(function(d){
-			// 		return [d.Year, d.MPersons, d.BCost]
-			// 	}))
-			// });
-			//loaddata(data);
-			function loaddata(d){
-				d.Year = +d.Year;
-				d.Households = +d.Households;
-				d.Persons = +d.Persons;
-				d.TotalCost = +d.TotalCost;
-				d.CostPerHousehold = +d.CostPerHousehold;
-				d.CostPerPerson = +d.CostPerPerson;
-				d.MPersons = +d.MPersons;
-				d.State = d.State;
-				d.BCost = +d.BCost;
-			}
-						
-			
 			
 			</script>
 			</div>
