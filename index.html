@@ -1,7 +1,16 @@
 <!DOCTYPE html>
 <html>
 	<script src='https://d3js.org/d3.v5.min.js'></script>
-	<style> rect {fill: #DCEDC8; stroke: black; }</style>
+	<style> rect {fill: #DCEDC8; stroke: black; }
+			#tooltip {
+				opacity: 0;
+				position: absolute;
+				text-align: center;
+				width: 60px; height: 40px;
+				background: white;
+				border: 0px
+			}
+	</style>
 	<head>
 		<title>USDA SNAP Benefits Issuance</title>
 		<!-- link to main stylesheet -->
@@ -29,7 +38,8 @@
 			    </p>
 		</div>		 
 		<div id="USChart" align="center">
-		<svg width=800 height=500></svg>		
+		<svg width=800 height=500></svg>
+		<div id="tooltip"></div>		
 			<script>
 			async function init() {
 			//function init() {
@@ -43,7 +53,9 @@
 				d.CostPerPerson = +d.CostPerPerson;
 				d.MPersons = +d.MPersons;
 				d.State = d.State;
-			});				
+				d.BCost = +d.BCost;
+			});
+			var tooltip = d3.select("#tooltip");				
 			var state = "US"
 			console.log(data)
 			var xs = d3.scaleBand().domain(data.map(function (d) {return d.Year})).range([0,700])
@@ -69,8 +81,16 @@
 			.attr('x',function(d,i) {return xs(parseInt(d.Year));})
 			.attr('y',function(d,i) {return ys(parseInt(d.MPersons));})
 			.attr('width', xs.bandwidth())
-			.attr('height',function(d,i) {return hs(parseInt(d.MPersons));});
-			
+			.attr('height',function(d,i) {return hs(parseInt(d.MPersons));})
+			.on("mouseover", function(d,i) {
+    			tooltip.style("visibility", "visible")
+    					.style("opacity", 1)
+						.style("left", (d3.event.pageX)+"px")
+						.style("top", (d3.event.pageY)+"py")
+						.html("Total Amount Distributed is $"+d.BCost+ "Billion Dollars");
+			})
+			.on("mouseout", function() {tooltip.style("opacity", 0)})
+						
 				// y axis
 			svg1.append("g")
 			.call(d3.axisLeft(ys).tickValues(["10","20","30","40","50"])
@@ -142,12 +162,7 @@
 			.attr("stroke", "steelblue")
 			.attr("stroke-width", "2")
 			.attr("stroke-dasharray", "10");
-			svg1.selectAll('rect')
-			.on("mouseover", function() {
-    		tooltip.style("visibility", "visible")
-    		tooltip.style("opacity", 1)
-    		d3.select(this).style("fill", "red");});
-
+			
 			}
 			</script>
 			</div>
