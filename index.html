@@ -45,6 +45,8 @@
 			//function init() {
 			const data = d3.csv("https://raw.githubusercontent.com/bipinkarnati/bipinkarnati.github.io/master/USTotals.csv")
 			.then(function(data){return data});
+			loaddata(data);
+			function loaddata(data){
 			data.forEach(function(d) {
 				d.Year = +d.Year;
 				d.Households = +d.Households;
@@ -56,6 +58,7 @@
 				d.State = d.State;
 				d.BCost = +d.BCost;
 			});
+			}
 			
 			var tooltip = d3.select("#tooltip");				
 			var state = "US"
