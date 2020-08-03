@@ -13,7 +13,7 @@ nav ul, footer ul {
 }
 nav ul li, footer ul li {
     display: inline;
-    margin-right: 5px;
+    margin-right: 1px;
 }
 .intro{
     font-size: 1em;
@@ -31,13 +31,13 @@ h2 {
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
 }
 p {
-    font-size: 1.0em;
+    font-size: 0.8em;
     line-height: 1.2em;
     color: #333;
 }
 footer {
     border-top: 1px solid #d5d5d5;
-    font-size: 1.4em;
+    font-size: 0.8em;
 }
 
 ul.posts { 
