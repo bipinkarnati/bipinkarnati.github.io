@@ -46,24 +46,24 @@
 			const data = d3.csv("https://raw.githubusercontent.com/bipinkarnati/bipinkarnati.github.io/master/USTotals.csv")
 			.then(function(data){return data});
 			loaddata(data);
-			function loaddata(data){
-			data.forEach(function(d) {
-				d.Year = +d.Year;
-				d.Households = +d.Households;
-				d.Persons = +d.Persons;
-				d.TotalCost = +d.TotalCost;
-				d.CostPerHousehold = +d.CostPerHousehold;
-				d.CostPerPerson = +d.CostPerPerson;
-				d.MPersons = +d.MPersons;
-				d.State = d.State;
-				d.BCost = +d.BCost;
-			});
-			}
+			// function loaddata(data){
+			// data.forEach(function(d) {
+			// 	d.Year = +d.Year;
+			// 	d.Households = +d.Households;
+			// 	d.Persons = +d.Persons;
+			// 	d.TotalCost = +d.TotalCost;
+			// 	d.CostPerHousehold = +d.CostPerHousehold;
+			// 	d.CostPerPerson = +d.CostPerPerson;
+			// 	d.MPersons = +d.MPersons;
+			// 	d.State = d.State;
+			// 	d.BCost = +d.BCost;
+			// });
+			// }
 			
 			var tooltip = d3.select("#tooltip");				
 			var state = "US"
 			console.log(data)
-			var xs = d3.scaleBand().domain(data.map(function (d) {return d.Year})).range([0,700])
+			var xs = d3.scaleBand().domain(data.map(function (d) {return parsseInt(d.Year)})).range([0,700])
 			var ys = d3.scaleLinear().domain([0,50]).range([400,0])
 			var hs = d3.scaleLinear().domain([0,50]).range([0,400])
 			height = 400
