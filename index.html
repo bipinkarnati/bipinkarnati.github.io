@@ -43,8 +43,13 @@
 			<script>
 			//async function init() {
 			//function init() {
-			const data = d3.csv("https://raw.githubusercontent.com/bipinkarnati/bipinkarnati.github.io/master/USTotals.csv")
+			const dataset = d3.csv("https://raw.githubusercontent.com/bipinkarnati/bipinkarnati.github.io/master/USTotals.csv")
 			.then(function(data){return data});
+			const usdata = dataset.then(function(v) {
+				return Promise.all(v.map(function(d){
+					return [d.Year, d.MPersons, d.BCost]
+				}))
+			});
 			//loaddata(data);
 			// function loaddata(data){
 			// data.forEach(function(d) {
@@ -62,8 +67,8 @@
 			
 			var tooltip = d3.select("#tooltip");				
 			var state = "US"
-			console.log(data)
-			var xs = d3.scaleBand().domain(data.map(function (d) {return parsseInt(d.Year)})).range([0,700])
+			console.log(usdata)
+			var xs = d3.scaleBand().domain(usdata.map(function (d) {return parsseInt(d.Year)})).range([0,700])
 			var ys = d3.scaleLinear().domain([0,50]).range([400,0])
 			var hs = d3.scaleLinear().domain([0,50]).range([0,400])
 			height = 400
@@ -76,7 +81,7 @@
 				.attr("transform","translate(" + margin.left + "," + margin.top +")");
 				
 				//chart
-			var state_data = data.filter(function(d) {return d.State == state});
+			var state_data = usdata.filter(function(d) {return d.State == state});
 			console.log(state_data)
 			svg1.selectAll().data(state_data)
 			.enter()
