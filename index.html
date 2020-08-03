@@ -28,7 +28,7 @@
 			</nav>   
 		</div>
 	</head>
-	<body>
+	<body onload='init()';>
 		<div class="intro">
 			    <p>
 			    	In the United States, the Supplemental Nutrition Assistance Program (SNAP), formerly yet still commonly known as the Food Stamp Program, 
@@ -41,10 +41,10 @@
 		<svg width=800 height=500></svg>
 		<div id="tooltip"></div>		
 			<script>
-			//async function init() {
+			var data = []
+			async function init() {
 			//function init() {
-			const data = d3.csv("https://raw.githubusercontent.com/bipinkarnati/bipinkarnati.github.io/master/USTotals.csv")
-			.then(function(data){return data});
+			data = await d3.csv("https://raw.githubusercontent.com/bipinkarnati/bipinkarnati.github.io/master/USTotals.csv");
 			data.forEach(function(d) {
 				d.Year = +d.Year;
 				d.Households = +d.Households;
@@ -56,7 +56,7 @@
 				d.State = d.State;
 				d.BCost = +d.BCost;
 			});
-			
+			}
 			var tooltip = d3.select("#tooltip");				
 			var state = "US"
 			console.log(data)
