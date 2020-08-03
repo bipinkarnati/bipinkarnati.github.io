@@ -41,10 +41,9 @@
 		<svg width=800 height=500></svg>
 		<div id="tooltip"></div>		
 			<script>
-			var data = []
 			async function init() {
 			//function init() {
-			data = await d3.csv("https://raw.githubusercontent.com/bipinkarnati/bipinkarnati.github.io/master/USTotals.csv");
+			const data = await d3.csv("https://raw.githubusercontent.com/bipinkarnati/bipinkarnati.github.io/master/USTotals.csv");
 			data.forEach(function(d) {
 				d.Year = +d.Year;
 				d.Households = +d.Households;
