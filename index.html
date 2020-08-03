@@ -142,6 +142,12 @@
 			.attr("stroke", "steelblue")
 			.attr("stroke-width", "2")
 			.attr("stroke-dasharray", "10");
+			svg1.selectAll('rect')
+			.on("mouseover", function() {
+    		tooltip.style("visibility", "visible")
+    		tooltip.style("opacity", 1)
+    		d3.select(this).style("fill", "red");});
+
 			}
 			</script>
 			</div>
