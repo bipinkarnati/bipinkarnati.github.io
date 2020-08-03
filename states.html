@@ -47,7 +47,6 @@
 				d.Region = d.Region;
 				d.BCost = d.BCost;
 				d.MCost = d.MCost;
-				d.RegionColor = d.RegionColor;
 			});	
 			// get list of states from data for dropdown
 			const stateData = data.filter(function(d) {return d && d.State != "US" 
@@ -83,15 +82,7 @@
 			var state_data = data.filter(function(d) {return d && d.State == state});
 			
 			console.log(state_data)
-			let region_col_map = {}
-			region_col_map["NERO"] = "pink";
-			region_col_map["MARO"] = "lightskyblue";
-			region_col_map["SERO"] = "yellow";
-			region_col_map["MWRO"] = "mediumpurple";
-			region_col_map["SWRO"] = "darksalmon";
-			region_col_map["MPRO"] = "palegreen";
-			region_col_map["WRO"] = "skyblue";
-			console.log(region_col_map);
+			
 			var regions = ["NERO","MARO","SERO","MWRO","SWRO","MPRO","WRO"]
 			
 						
@@ -172,7 +163,7 @@
 					<a href="https://www.fns.usda.gov/pd/supplemental-nutrition-assistance-program-snap">USDA-FNS</a>
 				</p>
         		<p>
-					<b>Disclaimer:</b> This site is built for learning purpose only.
+					<b style="color: white;">Disclaimer: This site is built for learning purpose only.</b>
 				</p>
 		</ul>
 		</footer>
