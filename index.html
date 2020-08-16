@@ -39,9 +39,8 @@
 		<div id="tooltip"></div>		
 			<script>			
 			function init() {
-				let data = null;
 			async function load() {
-			let data = await d3.csv("https://raw.githubusercontent.com/bipinkarnati/bipinkarnati.github.io/master/USTotals.csv");
+			const data = await d3.csv("https://raw.githubusercontent.com/bipinkarnati/bipinkarnati.github.io/master/USTotals.csv");
 			data.forEach(function(d) {
 				d.Year = +d.Year;
 				d.Households = +d.Households;
