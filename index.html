@@ -54,6 +54,7 @@
 				d.BCost = +d.BCost;
 			});
 			}
+			data.then(function(data) {			
 			var tooltip = d3.select("#tooltip");				
 			var state = "US"
 			console.log(data)
@@ -161,7 +162,7 @@
 			.attr("stroke", "steelblue")
 			.attr("stroke-width", "2")
 			.attr("stroke-dasharray", "10");
-			
+		})
 			}
 			</script>
 		<footer>
