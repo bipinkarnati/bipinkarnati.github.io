@@ -80,7 +80,7 @@
 			.duration(3000)
 			.attr('width', xs.bandwidth())
 			.attr('height',function(d,i) {return hs(parseInt(d.MPersons));})			
-				.on("mouseover", function(d,i) {
+				.on('mousemove', function(d,i) {
     		 	tooltip.style("visibility", "visible")
     		 			.style("opacity", 1)
 			 			.style("left", (d3.event.pageX)+"px")
