@@ -74,20 +74,21 @@
 			svg1.selectAll().data(state_data)
 			.enter()
 			.append('rect')			
-			.attr('x',function(d,i) {return xs(parseInt(d.Year));})
-			.attr('y',function(d,i) {return ys(parseInt(d.MPersons));})
-			.transition()
-			.duration(3000)
-			.attr('width', xs.bandwidth())
-			.attr('height',function(d,i) {return hs(parseInt(d.MPersons));})			
-				.on('mouseover', function(d,i) {
+			.on('mouseover', function(d,i) {
     		 	tooltip.style("visibility", "visible")
     		 			.style("opacity", 1)
 			 			.style("left", (d3.event.pageX)+"px")
 			 			.style("top", (d3.event.pageY)+"py")
 			 			.html("Total Amount Distributed is $"+d.BCost+ "Billion Dollars");
 			 })
-			 	.on("mouseout", function() {tooltip.style("opacity", 0)});
+			.on("mouseout", function() {tooltip.style("opacity", 0)})
+			.attr('x',function(d,i) {return xs(parseInt(d.Year));})
+			.attr('y',function(d,i) {return ys(parseInt(d.MPersons));})
+			.transition()
+			.duration(3000)
+			.attr('width', xs.bandwidth())
+			.attr('height',function(d,i) {return hs(parseInt(d.MPersons));})			
+				;
 						
 				// y axis
 			svg1.append("g")
