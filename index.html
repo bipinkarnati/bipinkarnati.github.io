@@ -34,7 +34,7 @@
 			    	The Supplemental Nutrition Assistance Program (SNAP) is a United States federal program that provides food-purchasing assistance for low and no-income people. Below graph represents the stats of how many people were benefitted from this SNAP program FY2000-19. As we can see, there is a leap in number of people seeking assistance due to high unemployment rate during recession FY2008-11.In 2013, approximately 50 million people received benefits. To view region wise beneficiaries, please click "Beneficiaries By Regions" tab.<br>
 			    </p>
 		</div>		 
-		<div id="USChart" align="center">
+		<div id="USChart" align="center"></div>
 		<svg width=800 height=500></svg>
 		<div id="tooltip"></div>		
 			<script>
@@ -72,13 +72,13 @@
 			console.log(state_data)
 			svg1.selectAll().data(state_data)
 			.enter()
-			.append('rect')
-			.transition()
-			.duration(3000)
+			.append('rect')			
 			.attr('x',function(d,i) {return xs(parseInt(d.Year));})
 			.attr('y',function(d,i) {return ys(parseInt(d.MPersons));})
 			.attr('width', xs.bandwidth())
-			.attr('height',function(d,i) {return hs(parseInt(d.MPersons));});
+			.attr('height',function(d,i) {return hs(parseInt(d.MPersons));})
+			.transition()
+			.duration(3000);
 			// .on("mouseover", function(d,i) {
     		// 	tooltip.style("visibility", "visible")
     		// 			.style("opacity", 1)
@@ -162,7 +162,6 @@
 			
 			}
 			</script>
-			</div>
 		<footer>
     		<ul>
         		<p>
