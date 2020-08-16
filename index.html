@@ -37,10 +37,11 @@
 		<div id="USChart" align="center"></div>
 		<svg width=800 height=500></svg>
 		<div id="tooltip"></div>		
-			<script>
-			async function init() {
-			//function init() {
-			const data = await d3.csv("https://raw.githubusercontent.com/bipinkarnati/bipinkarnati.github.io/master/USTotals.csv");
+			<script>			
+			function init() {
+				let data = null;
+			async function load() {
+			let data = await d3.csv("https://raw.githubusercontent.com/bipinkarnati/bipinkarnati.github.io/master/USTotals.csv");
 			data.forEach(function(d) {
 				d.Year = +d.Year;
 				d.Households = +d.Households;
@@ -52,6 +53,7 @@
 				d.State = d.State;
 				d.BCost = +d.BCost;
 			});
+			}
 			var tooltip = d3.select("#tooltip");				
 			var state = "US"
 			console.log(data)
