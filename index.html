@@ -38,8 +38,8 @@
 		<svg width=800 height=500></svg>
 		<div id="tooltip"></div>		
 			<script>			
-			function init() {
-			async function load() {
+			async function init() {
+			
 			const data = await d3.csv("https://raw.githubusercontent.com/bipinkarnati/bipinkarnati.github.io/master/USTotals.csv");
 			data.forEach(function(d) {
 				d.Year = +d.Year;
@@ -51,8 +51,7 @@
 				d.MPersons = +d.MPersons;
 				d.State = d.State;
 				d.BCost = +d.BCost;
-			});
-			}
+			});			
 			data.then(function(data) {			
 			var tooltip = d3.select("#tooltip");				
 			var state = "US"
