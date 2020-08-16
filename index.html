@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-	<script src='https://d3js.org/d3.v4.min.js'></script>
+	<script src='https://d3js.org/d3.v5.min.js'></script>
 	<style> rect {fill: #DCEDC8; stroke: black; }
 			#tooltip {
 				opacity: 0;
@@ -28,7 +28,7 @@
 			</nav>   
 		</div>
 	</head>
-	<body>
+	<body onload="init()";>
 		<div class="intro">
 			    <p>
 			    	The Supplemental Nutrition Assistance Program (SNAP) is a United States federal program that provides food-purchasing assistance for low and no-income people. Below graph represents the stats of how many people were benefitted from this SNAP program FY2000-19. As we can see, there is a leap in number of people seeking assistance due to high unemployment rate during recession FY2008-11.In 2013, approximately 50 million people received benefits. To view region wise beneficiaries, please click "Beneficiaries By Regions" tab.<br>
@@ -37,10 +37,10 @@
 		<div id="USChart" align="center"></div>
 		<svg width=800 height=500></svg>
 		<div id="tooltip"></div>		
-			<script>			
+			<script>		
 			
-			
-			d3.csv("https://raw.githubusercontent.com/bipinkarnati/bipinkarnati.github.io/master/USTotals.csv",
+			async function init() {
+			const data = await d3.csv("https://raw.githubusercontent.com/bipinkarnati/bipinkarnati.github.io/master/USTotals.csv");
 			// data.forEach(function(d) {
 			// 	d.Year = +d.Year;
 			// 	d.Households = +d.Households;
@@ -51,8 +51,7 @@
 			// 	d.MPersons = +d.MPersons;
 			// 	d.State = d.State;
 			// 	d.BCost = +d.BCost;
-			//});			
-			function(data) {			
+			//});						
 			var tooltip = d3.select("#tooltip");				
 			var state = "US"
 			console.log(data)
@@ -161,7 +160,7 @@
 			.attr("stroke", "steelblue")
 			.attr("stroke-width", "2")
 			.attr("stroke-dasharray", "10");
-		});			
+		}				
 			</script>
 		<footer>
     		<ul>
