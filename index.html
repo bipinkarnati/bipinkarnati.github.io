@@ -79,7 +79,8 @@
     		 			.style("opacity", 1)
 			 			.style("left", (d3.event.pageX)+"px")
 			 			.style("top", (d3.event.pageY)+"py")
-			 			.html("Total Amount Distributed is $"+d.BCost+ "Billion Dollars");
+						.html(getTooltipString(d.Year, d.Households, d.BCost));
+			 			//.html("Total Amount Distributed is $"+d.BCost+ "Billion Dollars");
 			 })
 			.on("mouseout", function() {tooltip.style("opacity", 0)})
 			.attr('x',function(d,i) {return xs(parseInt(d.Year));})
@@ -161,8 +162,16 @@
 			.attr("stroke", "steelblue")
 			.attr("stroke-width", "2")
 			.attr("stroke-dasharray", "10");
-		}				
-			</script>
+		}	
+		function getTooltipString(year, Households, BCost){
+		return "<table>" +
+			"<tr><td>Year: </td><td>" + year + </td></tr>" +
+			"<tr><td>Households: </td><td>" + Households + "</td></tr>" +
+			"<tr><td>Amount (in Billions): </td><td>" + BCost + "</td></tr>" +
+			"</table>"
+		}
+		
+		</script>
 		<footer>
     		<ul>
         		<p>
