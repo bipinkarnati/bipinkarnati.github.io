@@ -44,7 +44,7 @@
 			const data = await d3.csv("https://raw.githubusercontent.com/bipinkarnati/bipinkarnati.github.io/master/USTotals.csv");
 			data.forEach(function(d) {
 				d.Year = +d.Year;
-				d.Households = +d.Households;
+				d.Households = d.Households;
 				d.Persons = +d.Persons;
 				d.TotalCost = +d.TotalCost;
 				d.CostPerHousehold = +d.CostPerHousehold;
@@ -165,9 +165,9 @@
 		}	
 		function getTooltipString(year, Households, BCost){
 		return "<table>" +
-			"<tr><td>Year: </td><td>" + year + "</td></tr>" +
-			"<tr><td>Households: </td><td>" + Households + "</td></tr>" +
-			"<tr><td>Amount (in Billions): </td><td>" + BCost + "</td></tr>" +
+			"<tr><td align='left'>Year: </td><td align='left'>" + year + "</td></tr>" +
+			"<tr><td align='left'>Households: </td><td align='left'>" + Households + "</td></tr>" +
+			"<tr><td align='left'>Amount (in Billions): </td><td align='left'>" + BCost + "</td></tr>" +
 			"</table>"
 		}
 		
