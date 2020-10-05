@@ -85,9 +85,10 @@
 			 			.style("top", (d3.event.pageY)+"py")
 						.html(getTooltipString(d.Year, d.Households, d.BCost))
 			 			//.html("Total Amount Distributed is $"+d.BCost+ "Billion Dollars");
-			d3.select(this).style("fill", "#bfeb8d");
+			d3.select(this).style("fill", "#cdebab");
 			 })
-			.on("mouseout", function() {tooltip.style("opacity", 0)})
+			.on("mouseout", function() {tooltip.style("opacity", 0)
+						   d3.select(this).style("fill", "#DCEDC8");})
 			.attr('x',function(d,i) {return xs(parseInt(d.Year));})
 			.attr('y',function(d,i) {return ys(parseInt(d.MPersons));})
 			.transition()
