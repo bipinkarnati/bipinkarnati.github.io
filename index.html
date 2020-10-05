@@ -79,13 +79,13 @@
 			.enter()
 			.append('rect')			
 			.on('mouseover', function(d,i) {
-			d3.select(this).style("fill", #bfeb8d)
     		 	tooltip.style("visibility", "visible")
     		 			.style("opacity", 1)
 			 			.style("left", (d3.event.pageX)+"px")
 			 			.style("top", (d3.event.pageY)+"py")
-						.html(getTooltipString(d.Year, d.Households, d.BCost));
+						.html(getTooltipString(d.Year, d.Households, d.BCost))
 			 			//.html("Total Amount Distributed is $"+d.BCost+ "Billion Dollars");
+			d3.select(this).style("stroke", "black");
 			 })
 			.on("mouseout", function() {tooltip.style("opacity", 0)})
 			.attr('x',function(d,i) {return xs(parseInt(d.Year));})
