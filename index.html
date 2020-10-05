@@ -79,7 +79,7 @@
 			.enter()
 			.append('rect')			
 			.on('mouseover', function(d,i) {
-				i.style("fill", #bfeb8d)
+			d3.select(this).style("fill", #bfeb8d)
     		 	tooltip.style("visibility", "visible")
     		 			.style("opacity", 1)
 			 			.style("left", (d3.event.pageX)+"px")
