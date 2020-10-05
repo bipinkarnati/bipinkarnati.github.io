@@ -7,7 +7,7 @@
 		<!-- link to main stylesheet -->
 		<link rel="stylesheet" type="text/css" href="/css/main.css">
 		<div class="header">
-			<h2>How many people in US receive assistance from FNS for buying nutritious food?</h2>				
+			<h2 align="center">How many people in US receive assistance from FNS for buying nutritious food?</h2>				
     		</div>
 		<div class="pages">
 			<nav>
@@ -75,7 +75,7 @@
 											 data.filter(function(d) {return d.State == "SWRO"}),
 											 data.filter(function(d) {return d.State == "MPRO"}),
 											 data.filter(function(d) {return d.State == "WRO"})]
-						console.log(region_data)
+						//console.log(region_data)
 						
 						const line = d3.line()
 						.x(function(d) {return xs(d.Year)})
